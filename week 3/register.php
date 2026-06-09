@@ -43,10 +43,12 @@ if(isset($_POST['register'])){
                required>
 
         <input type="password"
-               name="password"
-               placeholder="Password"
-               required>
+       id="password"
+       name="password"
+       placeholder="Password"
+       required>
 
+       <div id="strength"></div>    
         <button type="submit" name="register">
             Register
         </button>
@@ -54,6 +56,36 @@ if(isset($_POST['register'])){
     </form>
 
 </div>
+<script>
 
+const passwordField = document.getElementById("password");
+const strength = document.getElementById("strength");
+
+passwordField.addEventListener("keyup", function(){
+
+    let value = passwordField.value;
+
+    if(value.length < 6){
+
+        strength.innerHTML = "Weak Password";
+        strength.style.color = "red";
+
+    }
+    else if(value.length < 10){
+
+        strength.innerHTML = "Medium Password";
+        strength.style.color = "orange";
+
+    }
+    else{
+
+        strength.innerHTML = "Strong Password";
+        strength.style.color = "green";
+
+    }
+
+});
+
+</script>
 </body>
 </html>
