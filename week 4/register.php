@@ -29,8 +29,7 @@ if(isset($_POST['register'])){
 <div class="login-container">
 
     <h2>Create Account</h2>
-
-    <form method="POST">
+<form method="POST" onsubmit="return validateForm()"><
 
         <input type="text"
                name="fullname"
@@ -54,6 +53,23 @@ if(isset($_POST['register'])){
     </form>
 
 </div>
+<script>
 
+function validateForm(){
+
+    let password =
+    document.querySelector('input[name="password"]').value;
+
+    if(password.length < 8){
+
+        alert("Password must be at least 8 characters");
+
+        return false;
+    }
+
+    return true;
+}
+
+</script>
 </body>
 </html>
